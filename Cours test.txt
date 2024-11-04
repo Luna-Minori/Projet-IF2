@@ -1,0 +1,174 @@
+Nicolas Gaud
+
+// Je teste le programme qu'on est en train de faire avec le prof
+/*
+@param filePath - chemin du fichier à ouvrir
+@param searchedString - string à rechercher
+
+int searchFirstOccurenceInFile(char* filePath, char* searchedString);
+
+
+char* substringPointer = strstr(lazonederecherche, searchedString);
+strstr retourne NULL s'il ne trouve rien
+
+if(ferror(fptr)){
+  fprintf(stderr, "Error reading file %d\n", line);
+  exit(EXIT_FAILURE);
+}
+if(feof(fptr)){
+  printf("File successfully read\n");
+}
+
+une position dans un fichier txt => ligne + pointeur
+
+typedef struct{
+  int line; // numéro de la ligne
+  int location; //nb de caractère dans la ligne
+}FileLocation;
+
+
+fgets=>permet de lire une ligne dans un fichier 
+  while (fgets != NULL), on est pas arrivé au bout du fichier
+fgetc=>permet de lire caractère par caractère
+
+mémoire dynamique:
+
+malloc
+realloc
+clear
+
+location est un pointeur qui contient
+
+if(location==NULL){
+  location= (FileLocation*)malloc(sizeof(FileLocation)*(*nb0ccurence));
+}else{
+  location= (FileLocation*)realloc(location,sizeof(File)*(*nbOccurence));
+}
+
+line139
+
+(ca sert de faire un truc dynamique ?)
+(C'est quand on ne connait pas le nombre d'élément qui va composer notre tableur, et que l'on ne veut pas prendre de la place que l'on est pas sûr d'utiliser)
+(on sait pas si c'est 2 ou 200=>prend pas la même place)
+
+
+-------------------------NEW WEEK------------------------
+
+C'est ce que l'on va faire la semaine prochaine
+
+strcmp(s1,s2) => si s1==s2 =>return NULL
+                 si s1>s2 =>return 1
+                 si s1<s2 =>return -1
+              
+But: crée notre propre code ascii et pouvoir comparer des strings par rapport à celle-ci
+
+-------------------------
+On doit pouvoir le faire en 15 min: recréer strcmp
+
+s1="brute\0" 
+s2="brutalite\0"
+
+On doit comparer caractère par caractère
+3 cas d'arrêts de la boucle:
+- mon caractère [i] est != de \0 pour s1
+- mon caractère [i] est != de \0 pour s2
+- mon caractère [i] de s1 est == mon caractère [i] de s2
+
+=> Boucle While à 3 contidions d'arrêts possibles (1 ou 2 ou 3)=>tq 1 && 2 && 3, on continue jusqu'à trouver le i qui va différer entre s1 et s2
+
+Plus qu'à faire les différents if/else imbriquées
+
+-------------------------
+structure nommée OrderValue
+
+
+stati const OrderValue CharacterTable[] =  //il l'a définit dans le file.h
+    {{'\0',-1},
+    {'a',0},
+    {'b',1},
+    {'c',2},
+    {'d',3},
+    {'e',4},
+    {'f',5},
+    {'g',6}}
+
+int getCharacterTable(char c){
+
+
+}
+    
+int charCmp(char c1)
+
+-------------------------Commentaires de fonctions exemple
+
+/**
+*Function sorintj an array of str using bubblrsort
+*@param size - the size of the array of str to sort
+*@param myarray - blablabla
+*/
+
+
+-------------------------Enlever les espaces en trop dans une str difficulté +
+
+Principe: On parcourt la str pour trouver soit lettre soit \0. Si \0, on continue sans copier jusqu'à trouver char lettre.
+On va copier chaque caractère de notre tableau dans un nouveau tableau
+
+exemple: s1:"Hello   bonjour world    UwwwwU toto  mamie\0"
+doit devenir =>s2:"Hello bonjour world UwwwwU toto mamie\0"
+
+//Gestion des espaces
+Tq(s1)[i]!=('\0')faire:
+  Tq (s1[i]!='\0') ET (s1[i]!+' ')faire:
+    ++i
+  Si s1[i-1]==' ' ET i>1alors: //Mais pb si on ne rentre pas dans la boucle de départ!
+    s2[j]=' ';           // Donc on rajoute une condition: 
+    j++;
+
+//Gestion des non-espaces
+  
+  Tq (si [i]!='\0') ET (si [i]!=' ') faire:
+    s2[j]=s1[i]
+    i<-i+1
+    j<-j+1
+  fin
+fin 
+void removeDirtySpaces( char* stringWithSpace);
+
+Possibilitée du même algo mais en remplaçant tous les s2 par s1, ça fait gagner de la place, mais il faudra bien penser à remalloc s1 =j, car tout ce qui suivra devrait être des espaces.
+
+-------------------------ReverseString difficulté ++
+
+dans son file.h
+
+int containesSubString (char* mainString, char* subString);
+
+/**
+  * Function reversing the input string
+  * str - the string to reverse, this variable will be modified by this function
+  */
+void reverseString(cha* str);
+
+#endif //ADVANCEDSTRINGS_STRINGS_H //son file.h fini comme ça
+
+main.c
+
+void reverseString(char* str){
+  int len=strlen(str);/*requires String.h
+
+}
+
+Il va trop vite -_-
+
+-------------------------Fusionner des produits qui sont dupliqués..? difficulté +++
+
+Des produits qui ont la même référence, mais peut-être des prix différents, ça ne va pas!
+On va donc fusionner des produits qui ont le même code, faire la somme des produits qui ont le même code au final, et pour le prix, on fait une somme pondérée du nb de produits possédant le même prix
+Pour se faire, on peut parcourir un tableau pour trouver le produit à fusionner (le premier, qui aura l'intégralité du stock)
+Il faudra supprimer les autres éléments possédants le même code et repousser les autres éléments => Fonction remove
+
+
+
+MergeDupplicateProduct
+
+
+Fin des CM d'IF2
